@@ -7,10 +7,36 @@
 
 @theme {
     --font-sans:
-        "Geist Sans", "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Geist", "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
     --font-mono:
         "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
+
+    /* Custom Gray Scale (replacing Zinc) */
+    --color-zinc-50: oklch(0.9581468870268093 0 none);
+    --color-zinc-100: oklch(0.8914313457035393 0 none);
+    --color-zinc-200: oklch(0.7889206270075311 0 none);
+    --color-zinc-300: oklch(0.6960069354631117 0 none);
+    --color-zinc-400: oklch(0.6032473921145677 0 none);
+    --color-zinc-500: oklch(0.5032293384241285 0 none);
+    --color-zinc-600: oklch(0.40539754419683494 0 none);
+    --color-zinc-700: oklch(0.328969281337264 0 none);
+    --color-zinc-800: oklch(0.2644796726260613 0 none);
+    --color-zinc-900: oklch(0.20019308840256111 0 none);
+    --color-zinc-950: oklch(0 0 none);
+
+    /* Primary Color */
+    --color-primary-50: var(--color-blue-50);
+    --color-primary-100: var(--color-blue-100);
+    --color-primary-200: var(--color-blue-200);
+    --color-primary-300: var(--color-blue-300);
+    --color-primary-400: var(--color-blue-400);
+    --color-primary-500: var(--color-blue-500);
+    --color-primary-600: var(--color-blue-600);
+    --color-primary-700: var(--color-blue-700);
+    --color-primary-800: var(--color-blue-800);
+    --color-primary-900: var(--color-blue-900);
+    --color-primary-950: var(--color-blue-950);
 }

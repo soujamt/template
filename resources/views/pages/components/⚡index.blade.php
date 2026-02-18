@@ -2,16 +2,23 @@
 
 use Livewire\Component;
 
-new class extends Component
-{
-    //
+new class extends Component {
+    public function submit()
+    {
+        sleep(1);
+    }
+
+    public function submitSleep2s()
+    {
+        sleep(2);
+    }
 };
 ?>
 
 <div class="max-w-7xl mx-auto p-8 space-y-8">
     <div class="space-y-2">
         <h1 class="text-3xl font-bold tracking-tight">Buttons</h1>
-        <p class="text-slate-500">Displays a button or a component that looks like a button.</p>
+        <p class="text-zinc-500">Displays a button or a component that looks like a button.</p>
     </div>
 
     <div class="grid gap-8">
@@ -38,6 +45,19 @@ new class extends Component
             </div>
         </div>
 
+        <!-- Colors -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-semibold">Colors</h2>
+            <div class="flex flex-wrap gap-4">
+                <x-button variant="primary" color="primary">Primary</x-button>
+                <x-button variant="primary" color="green">Green</x-button>
+                <x-button variant="primary" color="blue">Blue</x-button>
+                <x-button variant="primary" color="indigo">Indigo</x-button>
+                <x-button variant="primary" color="purple">Purple</x-button>
+                <x-button variant="primary" color="pink">Pink</x-button>
+            </div>
+        </div>
+
         <!-- Icons -->
         <div class="space-y-4">
             <h2 class="text-xl font-semibold">Icons (Phosphor)</h2>
@@ -52,16 +72,28 @@ new class extends Component
         <!-- Loading State -->
         <div class="space-y-4">
             <h2 class="text-xl font-semibold">Loading State (Simulated)</h2>
-            <div class="flex flex-wrap gap-4" x-data="{ loading: false }">
-                <x-button @click="loading = true; setTimeout(() => loading = false, 2000)" ::loading="loading ? 'save' : false" wire:loading.attr="disabled">
-                    <span x-show="!loading">Click to Load</span>
-                    <span x-show="loading">Loading...</span>
-                </x-button>
+            <div class="p-4 border border-zinc-200 rounded-lg space-y-4">
+                <p class="text-sm text-zinc-500">Each button simulates a 1-second delay.</p>
 
-                    <!-- Note: wire:loading requires a Livewire component context usually, but we can test the DOM structure here -->
-                    <x-button loading="save">
-                    Saving...
+                <form class="flex flex-wrap gap-4 items-center" wire:submit="submit">
+                    <!-- Basic Submit with Text -->
+                    <x-button type="submit">
+                        Save Changes
                     </x-button>
+
+                    <!-- Icon Swap -->
+                    <x-button type="submit" variant="secondary" icon="ph-fill ph-floppy-disk">
+                        Save with Icon
+                    </x-button>
+
+                    <!-- Different Color -->
+                    <x-button type="submit" color="green" icon="ph ph-check">
+                        Confirm
+                    </x-button>
+
+                    <!-- Only Icon -->
+                    <x-button wire:click="submitSleep2s" size="icon" icon="ph-fill ph-paper-plane-right" />
+                </form>
             </div>
         </div>
 
@@ -73,7 +105,7 @@ new class extends Component
                 <x-button href="#" variant="outline">Outline Link</x-button>
             </div>
         </div>
-            <!-- States -->
+        <!-- States -->
         <div class="space-y-4">
             <h2 class="text-xl font-semibold">States</h2>
             <div class="flex flex-wrap gap-4">
