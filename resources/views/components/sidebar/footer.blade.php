@@ -1,7 +1,7 @@
 @props([
-    'avatar' => 'https://avatars.laravel.cloud/taylor@laravel.com',
-    'name' => 'John Doe',
-    'email' => 'jhon@example.com'
+    'avatar' => 'https://avatars.laravel.cloud/',
+    'name' => '',
+    'email' => ''
 ])
 
 @php

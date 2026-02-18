@@ -1,3 +1,9 @@
+@props([
+    'icon' => 'ph-fill ph-lightning',
+    'name' => 'Acme Inc.',
+    'color' => 'bg-indigo-600',
+])
+
 <div
     class="flex h-14 shrink-0 items-center justify-between px-3 border-b border-zinc-200 dark:border-zinc-800 transition-all duration-300">
 
@@ -7,11 +13,11 @@
             <!-- Logo + App Name -->
             <div class="flex items-center gap-2.5 min-w-0">
                 <div
-                    class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-600 text-white shrink-0 shadow-sm ring-1 ring-inset ring-black/5 dark:ring-white/10">
-                    <i class="ph-fill ph-lightning text-lg"></i>
+                    class="flex items-center justify-center w-8 h-8 rounded-lg {{ $color }} text-white shrink-0 shadow-sm ring-1 ring-inset ring-black/5 dark:ring-white/10">
+                    <i class="{{ $icon }} text-lg"></i>
                 </div>
-                <span class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate sidebar-label">Acme
-                    Inc.</span>
+                <span
+                    class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 truncate sidebar-label">{{ $name }}</span>
             </div>
 
             <!-- Collapse / Close Button -->
@@ -33,8 +39,8 @@
             <div
                 class="absolute inset-0 flex items-center justify-center transition-opacity duration-200 group-hover/header:opacity-0">
                 <div
-                    class="flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-600 text-white shadow-sm ring-1 ring-inset ring-black/5 dark:ring-white/10">
-                    <i class="ph-fill ph-lightning text-lg"></i>
+                    class="flex items-center justify-center w-8 h-8 rounded-lg {{ $color }} text-white shadow-sm ring-1 ring-inset ring-black/5 dark:ring-white/10">
+                    <i class="{{ $icon }} text-lg"></i>
                 </div>
             </div>
 

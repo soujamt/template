@@ -99,7 +99,7 @@
 
     <!-- Sidebar (Variable Width) -->
     <x-sidebar>
-        <x-sidebar.header />
+        <x-sidebar.header icon="ph-fill ph-lightning" name="Acme Inc." color="bg-rose-400" />
 
         <x-sidebar.content>
             <x-sidebar.group label="Overview">
@@ -130,7 +130,8 @@
             </x-sidebar.group>
         </x-sidebar.content>
 
-        <x-sidebar.footer />
+        <x-sidebar.footer avatar="https://avatars.laravel.cloud/taylor@laravel.com" name="John Doe"
+            email="jhon@example.com" />
     </x-sidebar>
 
     <!-- Main Content -->
