@@ -136,16 +136,47 @@
 
     <!-- Main Content -->
     <main class="flex-1 flex flex-col min-w-0 overflow-hidden transition-all duration-300 ease-in-out">
-        <!-- Mobile Header -->
-        <div
-            class="flex h-16 shrink-0 items-center justify-between gap-x-4 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 shadow-sm md:hidden">
-            <div class="flex items-center gap-4">
-                <button type="button" class="-m-2.5 p-2.5 text-zinc-700 dark:text-zinc-200"
-                    @click="sidebarOpen = true">
-                    <span class="sr-only">Open sidebar</span>
-                    <i class="ph ph-list text-2xl"></i>
-                </button>
-                <div class="text-sm font-semibold leading-6 text-zinc-900 dark:text-white">Dashboard</div>
+        <!-- Mobile Navbar -->
+        <div class="flex h-14 shrink-0 items-center justify-between border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 md:hidden"
+            x-data="{
+                isDark: localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                smoothThemeSwitch(callback) {
+                    const style = document.createElement('style');
+                    style.textContent = '*, *::before, *::after { transition: color 150ms ease, background-color 150ms ease, background 150ms ease, border-color 150ms ease, box-shadow 150ms ease, opacity 150ms ease, fill 150ms ease, stroke 150ms ease !important; }';
+                    document.head.appendChild(style);
+                    callback();
+                    setTimeout(() => { style.remove(); }, 200);
+                },
+                cycleTheme() {
+                    this.smoothThemeSwitch(() => {
+                        if (this.isDark) {
+                            localStorage.theme = 'light';
+                            document.documentElement.classList.remove('dark');
+                            this.isDark = false;
+                        } else {
+                            localStorage.theme = 'dark';
+                            document.documentElement.classList.add('dark');
+                            this.isDark = true;
+                        }
+                    });
+                }
+            }">
+
+            <!-- Left: Hamburger -->
+            <x-button variant="ghost" size="icon" @click="sidebarExpanded = true; sidebarOpen = true">
+                <i class="ph ph-list text-xl"></i>
+            </x-button>
+
+            <!-- Right: Theme Toggle + Avatar -->
+            <div class="flex items-center gap-2">
+                <!-- Theme Cycle Button -->
+                <x-button variant="secondary" size="icon" @click="cycleTheme()">
+                    <i class="ph-fill text-lg" :class="isDark ? 'ph-moon' : 'ph-sun'"></i>
+                </x-button>
+
+                <!-- Avatar -->
+                <x-avatar src="https://avatars.laravel.cloud/taylor@laravel.com" size="lg"
+                    class="cursor-pointer" />
             </div>
         </div>
 

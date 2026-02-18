@@ -13,7 +13,7 @@
             <!-- Logo + App Name -->
             <div class="flex items-center gap-2.5 min-w-0">
                 <div
-                    class="flex items-center justify-center w-8 h-8 rounded-lg {{ $color }} text-white shrink-0 shadow-sm ring-1 ring-inset ring-black/5 dark:ring-white/10">
+                    class="flex items-center justify-center w-8 h-8 rounded-md {{ $color }} text-white shrink-0 shadow-sm ring-1 ring-inset ring-black/5 dark:ring-white/10">
                     <i class="{{ $icon }} text-lg"></i>
                 </div>
                 <span
@@ -21,12 +21,12 @@
             </div>
 
             <!-- Collapse / Close Button -->
-            <button @click="window.innerWidth >= 768 ? sidebarExpanded = false : sidebarOpen = false"
-                class="flex items-center justify-center w-7 h-7 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors focus:outline-none shrink-0"
-                title="Collapse Sidebar">
+            <x-button variant="ghost" size="icon"
+                @click="window.innerWidth >= 768 ? sidebarExpanded = false : sidebarOpen = false"
+                title="Collapse Sidebar" class="shrink-0">
                 <i class="ph-fill ph-sidebar-simple text-lg hidden md:block"></i>
                 <i class="ph ph-x text-lg md:hidden"></i>
-            </button>
+            </x-button>
         </div>
     </template>
 
@@ -39,7 +39,7 @@
             <div
                 class="absolute inset-0 flex items-center justify-center transition-opacity duration-200 group-hover/header:opacity-0">
                 <div
-                    class="flex items-center justify-center w-8 h-8 rounded-lg {{ $color }} text-white shadow-sm ring-1 ring-inset ring-black/5 dark:ring-white/10">
+                    class="flex items-center justify-center w-8 h-8 rounded-md {{ $color }} text-white shadow-sm ring-1 ring-inset ring-black/5 dark:ring-white/10">
                     <i class="{{ $icon }} text-lg"></i>
                 </div>
             </div>
@@ -47,10 +47,9 @@
             <!-- Expand icon (on hover) -->
             <div
                 class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover/header:opacity-100">
-                <div
-                    class="flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+                <x-button variant="ghost" size="icon" title="Expand Sidebar" class="shrink-0">
                     <i class="ph-fill ph-sidebar-simple text-xl transform rotate-180"></i>
-                </div>
+                </x-button>
             </div>
         </div>
     </template>

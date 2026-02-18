@@ -1,7 +1,7 @@
 @props([
     'avatar' => 'https://avatars.laravel.cloud/',
     'name' => '',
-    'email' => ''
+    'email' => '',
 ])
 
 @php
@@ -92,16 +92,15 @@
             {{-- User Profile --}}
             <div
                 class="group hidden md:flex items-center gap-3 rounded-lg p-2 -mx-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer">
-                <div
-                    class="h-8 w-8 rounded-lg bg-zinc-200 dark:bg-zinc-700 shrink-0 overflow-hidden ring-2 ring-zinc-200 dark:ring-zinc-700">
-                    <img src="{{ $avatar }}" alt="Avatar" class="h-full w-full object-cover">
-                </div>
+                <x-avatar :src="$avatar" size="md" ring />
                 <div class="flex flex-col min-w-0 flex-1">
-                    <span class="text-sm font-semibold text-zinc-900 dark:text-white truncate leading-tight">{{ $name }}</span>
+                    <span
+                        class="text-sm font-semibold text-zinc-900 dark:text-white truncate leading-tight">{{ $name }}</span>
                     <span
                         class="text-xs text-zinc-500 dark:text-zinc-400 truncate leading-tight">{{ $email }}</span>
                 </div>
-                <i class="ph ph-caret-up-down text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 shrink-0"></i>
+                <i
+                    class="ph ph-caret-up-down text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 shrink-0"></i>
             </div>
         </div>
     </template>
@@ -110,16 +109,12 @@
     <template x-if="!sidebarExpanded">
         <div class="flex flex-col items-center gap-3 py-3">
             {{-- Theme Cycle Button --}}
-            <button @click="cycleTheme()"
-                class="flex items-center justify-center rounded-lg w-8 h-8 transition-all focus:outline-none {{ $activeClasses }}"
-                style="{{ $activeStyleLine }}">
+            <x-button variant="primary" size="icon" color="zinc" @click="cycleTheme()">
                 <i class="ph-fill text-lg" :class="isDark ? 'ph-moon' : 'ph-sun'"></i>
-            </button>
+            </x-button>
 
             {{-- Avatar Only --}}
-            <div class="h-8 w-8 rounded-lg bg-zinc-200 dark:bg-zinc-700 shrink-0 overflow-hidden">
-                <img src="{{ $avatar }}" alt="Avatar" class="h-full w-full object-cover">
-            </div>
+            <x-avatar :src="$avatar" size="lg" />
         </div>
     </template>
 </div>

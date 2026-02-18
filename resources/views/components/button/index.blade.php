@@ -207,7 +207,7 @@
         ";
     } elseif ($variant === 'ghost') {
         $style =
-            '--btn-text: var(--color-zinc-700); --btn-hover-bg: var(--color-zinc-50); --btn-hover-text: var(--color-zinc-900); --btn-ring: var(--color-zinc-500);';
+            '--btn-text: var(--color-zinc-600); --btn-hover-bg: var(--color-zinc-100); --btn-hover-text: var(--color-zinc-900); --btn-ring: var(--color-zinc-500);';
         $variantClasses = "
             text-[var(--btn-text)] dark:text-zinc-400
             bg-transparent 
