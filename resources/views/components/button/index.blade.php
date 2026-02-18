@@ -181,30 +181,44 @@
             focus-visible:ring-[var(--btn-ring)]
         ";
     } elseif ($variant === 'secondary') {
-        // Restored Rich Secondary (White/Gray)
+        // Restored Rich Secondary (White/Gray) + Dark Mode Support
         $variantClasses = "
-            text-zinc-900
-            shadow-[0px_2px_4px_0px_rgba(0,0,0,0.10),0px_0px_0px_1px_rgba(0,0,0,0.16)]
-            border border-transparent
+            text-zinc-900 dark:text-white
+            shadow-[0px_2px_4px_0px_rgba(0,0,0,0.10),0px_0px_0px_1px_rgba(0,0,0,0.16)] dark:shadow-none
+            border border-transparent dark:border-white/10
             bg-[image:linear-gradient(rgba(227,227,227,0.8),rgba(227,227,227,0.8)),linear-gradient(180deg,#FDFDFD_100%,#F1F1F1_0%)]
+            dark:bg-none dark:bg-white/10
             bg-origin-padding bg-clip-padding
-            hover:bg-zinc-200/80
-            focus-visible:ring-zinc-950
+            hover:bg-zinc-200/80 dark:hover:bg-white/20
+            focus-visible:ring-zinc-950 dark:focus-visible:ring-white
         ";
     } elseif ($variant === 'outline') {
         $style =
             '--btn-border: var(--color-zinc-200); --btn-text: var(--color-zinc-700); --btn-hover-bg: var(--color-zinc-50); --btn-hover-text: var(--color-zinc-900); --btn-ring: var(--color-zinc-500);';
-        $variantClasses =
-            'border border-[var(--btn-border)] text-[var(--btn-text)] bg-transparent hover:bg-[var(--btn-hover-bg)] hover:text-[var(--btn-hover-text)] shadow-sm focus-visible:ring-[var(--btn-ring)]';
+        // Dark Mode: Override variables or add classes. Adding classes is easier for standard variants.
+        $variantClasses = "
+            border border-[var(--btn-border)] dark:border-zinc-700
+            text-[var(--btn-text)] dark:text-zinc-300
+            bg-transparent 
+            hover:bg-[var(--btn-hover-bg)] dark:hover:bg-white/5
+            hover:text-[var(--btn-hover-text)] dark:hover:text-white
+            shadow-sm 
+            focus-visible:ring-[var(--btn-ring)] dark:focus-visible:ring-zinc-400
+        ";
     } elseif ($variant === 'ghost') {
         $style =
             '--btn-text: var(--color-zinc-700); --btn-hover-bg: var(--color-zinc-50); --btn-hover-text: var(--color-zinc-900); --btn-ring: var(--color-zinc-500);';
-        $variantClasses =
-            'text-[var(--btn-text)] bg-transparent hover:bg-[var(--btn-hover-bg)] hover:text-[var(--btn-hover-text)] focus-visible:ring-[var(--btn-ring)]';
+        $variantClasses = "
+            text-[var(--btn-text)] dark:text-zinc-400
+            bg-transparent 
+            hover:bg-[var(--btn-hover-bg)] dark:hover:bg-white/5
+            hover:text-[var(--btn-hover-text)] dark:hover:text-white
+            focus-visible:ring-[var(--btn-ring)] dark:focus-visible:ring-zinc-400
+        ";
     } elseif ($variant === 'link') {
         $style = '--btn-text: var(--color-zinc-900); --btn-ring: var(--color-zinc-500);';
         $variantClasses =
-            'text-[var(--btn-text)] underline-offset-4 hover:underline focus-visible:ring-[var(--btn-ring)] p-0 h-auto';
+            'text-[var(--btn-text)] dark:text-zinc-300 underline-offset-4 hover:underline focus-visible:ring-[var(--btn-ring)] p-0 h-auto';
     } elseif ($variant === 'danger') {
         $style = "
             --btn-bg-start: var(--color-red-500);

@@ -15,16 +15,16 @@ new class extends Component {
 };
 ?>
 
-<div class="max-w-7xl mx-auto p-8 space-y-8">
+<div class="space-y-5">
     <div class="space-y-2">
-        <h1 class="text-3xl font-bold tracking-tight">Buttons</h1>
-        <p class="text-zinc-500">Displays a button or a component that looks like a button.</p>
+        <h1 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">Buttons</h1>
+        <p class="text-zinc-500 dark:text-zinc-400">Displays a button or a component that looks like a button.</p>
     </div>
 
     <div class="grid gap-8">
         <!-- Variants -->
         <div class="space-y-4">
-            <h2 class="text-xl font-semibold">Variants</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Variants</h2>
             <div class="flex flex-wrap gap-4">
                 <x-button variant="primary">Primary</x-button>
                 <x-button variant="secondary">Secondary</x-button>
@@ -37,7 +37,7 @@ new class extends Component {
 
         <!-- Sizes -->
         <div class="space-y-4">
-            <h2 class="text-xl font-semibold">Sizes</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Sizes</h2>
             <div class="flex flex-wrap items-center gap-4">
                 <x-button size="sm">Small</x-button>
                 <x-button size="md">Medium</x-button>
@@ -47,7 +47,7 @@ new class extends Component {
 
         <!-- Colors -->
         <div class="space-y-4">
-            <h2 class="text-xl font-semibold">Colors</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Colors</h2>
             <div class="flex flex-wrap gap-4">
                 <x-button variant="primary" color="primary">Primary</x-button>
                 <x-button variant="primary" color="green">Green</x-button>
@@ -60,7 +60,7 @@ new class extends Component {
 
         <!-- Icons -->
         <div class="space-y-4">
-            <h2 class="text-xl font-semibold">Icons (Phosphor)</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Icons (Phosphor)</h2>
             <div class="flex flex-wrap gap-4">
                 <x-button icon="ph-fill ph-paper-plane-right">Send</x-button>
                 <x-button variant="secondary" icon="ph-fill ph-trash">Delete</x-button>
@@ -71,9 +71,9 @@ new class extends Component {
 
         <!-- Loading State -->
         <div class="space-y-4">
-            <h2 class="text-xl font-semibold">Loading State (Simulated)</h2>
-            <div class="p-4 border border-zinc-200 rounded-lg space-y-4">
-                <p class="text-sm text-zinc-500">Each button simulates a 1-second delay.</p>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">Loading State (Simulated)</h2>
+            <div class="p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg space-y-4">
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Each button simulates a 1-second delay.</p>
 
                 <form class="flex flex-wrap gap-4 items-center" wire:submit="submit">
                     <!-- Basic Submit with Text -->
@@ -92,14 +92,16 @@ new class extends Component {
                     </x-button>
 
                     <!-- Only Icon -->
-                    <x-button wire:click="submitSleep2s" size="icon" icon="ph-fill ph-paper-plane-right" />
+                    @island()
+                        <x-button wire:click="submitSleep2s" size="icon" icon="ph-fill ph-paper-plane-right" />
+                    @endisland
                 </form>
             </div>
         </div>
 
         <!-- As Links -->
         <div class="space-y-4">
-            <h2 class="text-xl font-semibold">As Links</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">As Links</h2>
             <div class="flex flex-wrap gap-4">
                 <x-button href="#" variant="primary">Link Button</x-button>
                 <x-button href="#" variant="outline">Outline Link</x-button>
@@ -107,7 +109,7 @@ new class extends Component {
         </div>
         <!-- States -->
         <div class="space-y-4">
-            <h2 class="text-xl font-semibold">States</h2>
+            <h2 class="text-xl font-semibold text-zinc-900 dark:text-white">States</h2>
             <div class="flex flex-wrap gap-4">
                 <x-button disabled>Disabled</x-button>
             </div>
