@@ -4,7 +4,7 @@
         'translate-x-0': sidebarOpen,
         '-translate-x-full': !sidebarOpen,
         'md:w-64': sidebarExpanded,
-        'md:w-20': !sidebarExpanded,
+        'md:w-16': !sidebarExpanded,
         'md:translate-x-0': true
     }">
     {{ $slot }}

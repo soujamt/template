@@ -14,7 +14,7 @@
     }
 
     $classes =
-        'group flex items-center gap-x-3 rounded-md px-2 py-1 text-sm font-medium leading-6 transition-all duration-200 ';
+        'group flex items-center gap-x-3 rounded-md px-2 h-8 text-sm font-medium leading-6 transition-all duration-200 ';
 
     // Style variables for Primary Active State (matching Button component)
     $activeStyle = "
@@ -42,8 +42,10 @@
 @endphp
 
 <a href="{{ $href }}" @if ($isActive) style="{{ $activeStyle }}" @endif
-    {{ $attributes->merge(['class' => $classes]) }} :class="sidebarExpanded ? '' : 'md:justify-center md:px-2'"
-    @mouseenter="tooltip = '{{ $slot }}'; tooltipRect = $el.getBoundingClientRect()" @mouseleave="tooltip = ''" wire:navigate>
+    {{ $attributes->merge(['class' => $classes]) }}
+    :class="sidebarExpanded ? '' : 'md:justify-center md:px-0 md:w-8 md:mx-auto'"
+    @mouseenter="tooltip = '{{ $slot }}'; tooltipRect = $el.getBoundingClientRect()" @mouseleave="tooltip = ''"
+    wire:navigate>
 
     @if ($icon)
         <i

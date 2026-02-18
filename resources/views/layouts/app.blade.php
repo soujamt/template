@@ -42,29 +42,30 @@
 
         @media (min-width: 768px) {
             body.is-collapsed aside {
-                width: 5rem !important;
-                /* w-20 */
+                width: 4rem !important;
+                /* w-16 */
             }
 
-            body.is-collapsed .sidebar-label {
+            body.is-collapsed aside .sidebar-label {
                 display: none !important;
-            }
-
-            body.is-collapsed .sidebar-content {
-                padding-left: 0.5rem !important;
-                padding-right: 0.5rem !important;
-            }
-
-            body.is-collapsed .sidebar-icon-container {
-                justify-content: center !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
             }
 
             /* Icon rotation fix for collapsed state */
             body.is-collapsed .rotate-icon {
                 transform: rotate(180deg);
             }
+        }
+
+        /* Hide Scrollbar */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
     </style>
 
@@ -102,45 +103,34 @@
 
         <x-sidebar.content>
             <x-sidebar.group label="Overview">
-                <x-sidebar.item href="{{ route('inicio') }}" icon="ph ph-house-simple">Home</x-sidebar.item>
-                <x-sidebar.item href="{{ route('components.buttons') }}" icon="ph ph-radio-button">Buttons</x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-wallet">Balances</x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-arrows-left-right"
-                    badge="17">Transactions</x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-users" badge="8">Customers</x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-cube">Catalogue</x-sidebar.item>
+                <x-sidebar.item href="{{ route('inicio') }}" icon="ph ph-house-simple" :active="request()->routeIs('inicio')">
+                    Inicio
+                </x-sidebar.item>
+                <x-sidebar.item href="#" icon="ph ph-chart-line-up">Analytics</x-sidebar.item>
             </x-sidebar.group>
 
-            <x-sidebar.group label="Management">
-                <!-- Products Tree View -->
-                <x-sidebar.dropdown label="Products" icon="ph ph-package" active>
-                    <x-sidebar.item href="#" icon="ph ph-credit-card">Payments</x-sidebar.item>
-                    <x-sidebar.item href="#" icon="ph ph-receipt" active>Orders</x-sidebar.item>
-                    <x-sidebar.item href="#" icon="ph ph-file-text">Billings</x-sidebar.item>
-                    <x-sidebar.item href="#" icon="ph ph-chart-bar">Reporting</x-sidebar.item>
-                    <x-sidebar.item href="#" icon="ph ph-tag">Discounts</x-sidebar.item>
-                    <x-sidebar.item href="#" icon="ph ph-seal-check" badge="2">Licenses</x-sidebar.item>
+            <x-sidebar.group label="UI Components">
+                <x-sidebar.dropdown label="Elements" icon="ph ph-squares-four" :active="request()->routeIs('components.*')">
+                    <x-sidebar.item href="{{ route('components.buttons') }}" :active="request()->routeIs('components.buttons')">Buttons</x-sidebar.item>
+                    <x-sidebar.item href="#">Inputs</x-sidebar.item>
+                    <x-sidebar.item href="#">Cards</x-sidebar.item>
+                    <x-sidebar.item href="#">Badges</x-sidebar.item>
+                </x-sidebar.dropdown>
+                <x-sidebar.dropdown label="Overlay" icon="ph ph-browsers">
+                    <x-sidebar.item href="#">Modals</x-sidebar.item>
+                    <x-sidebar.item href="#">Tooltips</x-sidebar.item>
                 </x-sidebar.dropdown>
             </x-sidebar.group>
 
             <x-sidebar.group label="Settings">
+                <x-sidebar.item href="#" icon="ph ph-users">Team</x-sidebar.item>
+                <x-sidebar.item href="#" icon="ph ph-scroll">Audit Logs</x-sidebar.item>
+                <x-sidebar.item href="#" icon="ph ph-credit-card">Billing</x-sidebar.item>
                 <x-sidebar.item href="#" icon="ph ph-gear">Settings</x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-code">Developers</x-sidebar.item>
             </x-sidebar.group>
         </x-sidebar.content>
 
-        <x-sidebar.footer>
-            <div class="flex items-center gap-3 w-full">
-                <div class="h-8 w-8 rounded-full bg-zinc-200 dark:bg-zinc-700 shrink-0"></div>
-                <div class="flex flex-col text-sm sidebar-label overflow-hidden whitespace-nowrap">
-                    <span class="font-medium text-zinc-900 dark:text-white">Jane Doe</span>
-                    <span class="text-xs text-zinc-500">jane@example.com</span>
-                </div>
-                <div class="ml-auto sidebar-label">
-                    <x-theme-toggle />
-                </div>
-            </div>
-        </x-sidebar.footer>
+        <x-sidebar.footer />
     </x-sidebar>
 
     <!-- Main Content -->
@@ -173,6 +163,18 @@
     </div>
 
     @livewireScripts
+
+    <script>
+        // Re-apply theme after Livewire wire:navigate page transitions
+        document.addEventListener('livewire:navigated', () => {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
+                    '(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
 </body>
 
 </html>
