@@ -90,72 +90,258 @@ new class extends Component {
                 </div>
             </x-card>
 
-            {{-- Selling History --}}
-            <x-card title="Selling history" :padding="false">
+            {{-- SLA Monitoring --}}
+            <x-card :padding="false">
+                <x-slot:title>
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center justify-center w-6 h-6 rounded-full bg-zinc-100 dark:bg-zinc-800">
+                            <i class="ph ph-target text-sm text-zinc-500 dark:text-zinc-400"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-zinc-900 dark:text-white">SLA Monitoring</span>
+                    </div>
+                </x-slot:title>
                 <x-slot:headerActions>
-                    <x-button variant="ghost" size="icon">
-                        <i class="ph ph-dots-three text-lg"></i>
-                    </x-button>
+                    <div class="flex items-center gap-2">
+                        <div class="relative hidden sm:flex items-center">
+                            <i
+                                class="ph ph-magnifying-glass absolute left-3 text-zinc-400 pointer-events-none text-sm"></i>
+                            <input type="text" placeholder="Ticket"
+                                class="pl-8 pr-3 py-1.5 text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-300 dark:focus:ring-zinc-600 w-52 transition">
+                        </div>
+                        <button
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-zinc-600 dark:text-zinc-300 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-700/60 transition-colors">
+                            <i class="ph ph-funnel text-zinc-500"></i>
+                            <span>Filter</span>
+                        </button>
+                        <button
+                            class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                            <i class="ph ph-dots-three-vertical text-base"></i>
+                        </button>
+                    </div>
                 </x-slot:headerActions>
 
                 <x-table>
                     <x-table.header>
-                        <x-table.heading>Property</x-table.heading>
-                        <x-table.heading>Address</x-table.heading>
-                        <x-table.heading>Sold date</x-table.heading>
-                        <x-table.heading align="right">Sale price</x-table.heading>
-                        <x-table.heading>Status</x-table.heading>
+                        {{-- Checkbox column --}}
+                        <x-table.heading class="w-10 px-4">
+                            <input type="checkbox"
+                                class="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0 bg-white dark:bg-zinc-800 transition cursor-pointer">
+                        </x-table.heading>
+                        <x-table.heading sortable class="pl-0">Ticket ID</x-table.heading>
+                        <x-table.heading sortable>Subject</x-table.heading>
+                        <x-table.heading sortable>Priority</x-table.heading>
+                        <x-table.heading sortable>Assigned To</x-table.heading>
+                        <x-table.heading sortable>Status</x-table.heading>
+                        <x-table.heading sortable>Created Date</x-table.heading>
+                        <x-table.heading sortable>SLA Due</x-table.heading>
+                        <x-table.heading class="w-10"></x-table.heading>
                     </x-table.header>
+
                     <x-table.body>
+
+                        {{-- ===== ROW 1: #2319 · High · In Review · 2h left ===== --}}
                         <x-table.row>
-                            <x-table.cell class="font-medium text-zinc-900 dark:text-white">Apartment</x-table.cell>
-                            <x-table.cell>721 Meadowview Residences</x-table.cell>
-                            <x-table.cell>12 Jan 2026</x-table.cell>
-                            <x-table.cell align="right">$245,000</x-table.cell>
-                            <x-table.cell><x-badge color="green" dot>Completed</x-badge></x-table.cell>
+                            <x-table.cell class="w-10 px-4">
+                                <input type="checkbox" checked
+                                    class="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0 bg-white dark:bg-zinc-800 transition cursor-pointer">
+                            </x-table.cell>
+                            <x-table.cell class="pl-0 font-medium text-zinc-800 dark:text-white">#2319</x-table.cell>
+                            <x-table.cell class="text-zinc-700 dark:text-zinc-200">Payment failed on
+                                invoice</x-table.cell>
+                            {{-- Priority: High (red) --}}
+                            <x-table.cell>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-sm font-medium text-red-600 dark:text-red-400">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        class="shrink-0">
+                                        <rect x="0" y="7" width="3" height="7" rx="0.5"
+                                            fill="currentColor" opacity="0.4" />
+                                        <rect x="4" y="4" width="3" height="10" rx="0.5"
+                                            fill="currentColor" opacity="0.7" />
+                                        <rect x="8" y="1" width="3" height="13" rx="0.5"
+                                            fill="currentColor" />
+                                    </svg>
+                                    High
+                                </span>
+                            </x-table.cell>
+                            {{-- Assigned To --}}
+                            <x-table.cell>
+                                <div class="flex items-center gap-2">
+                                    <x-avatar src="https://i.pravatar.cc/150?u=john" alt="John Doe" size="xs" />
+                                    <span class="text-zinc-700 dark:text-zinc-200">John Doe</span>
+                                </div>
+                            </x-table.cell>
+                            {{-- Status: In Review (blue) --}}
+                            <x-table.cell>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-sm text-blue-600 dark:text-blue-400">
+                                    <i class="ph ph-file-text text-sm shrink-0"></i>
+                                    In Review
+                                </span>
+                            </x-table.cell>
+                            <x-table.cell>2025-08-18</x-table.cell>
+                            {{-- SLA Due: urgent = red --}}
+                            <x-table.cell class="font-medium text-red-600 dark:text-red-400">2h left</x-table.cell>
+                            <x-table.cell class="w-10 px-2">
+                                <button
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                                    <i class="ph ph-dots-three-vertical text-base"></i>
+                                </button>
+                            </x-table.cell>
                         </x-table.row>
+
+                        {{-- ===== ROW 2: #2320 · Medium · Delivered · 1h left ===== --}}
                         <x-table.row>
-                            <x-table.cell class="font-medium text-zinc-900 dark:text-white">Condo</x-table.cell>
-                            <x-table.cell>469 Pinehurst Suites</x-table.cell>
-                            <x-table.cell>03 Feb 2026</x-table.cell>
-                            <x-table.cell align="right">$310,500</x-table.cell>
-                            <x-table.cell><x-badge color="green" dot>Completed</x-badge></x-table.cell>
+                            <x-table.cell class="w-10 px-4">
+                                <input type="checkbox"
+                                    class="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0 bg-white dark:bg-zinc-800 transition cursor-pointer">
+                            </x-table.cell>
+                            <x-table.cell class="pl-0 font-medium text-zinc-800 dark:text-white">#2320</x-table.cell>
+                            <x-table.cell class="text-zinc-700 dark:text-zinc-200">Login issue</x-table.cell>
+                            {{-- Priority: Medium (amber) --}}
+                            <x-table.cell>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 dark:text-amber-400">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        class="shrink-0">
+                                        <rect x="0" y="7" width="3" height="7" rx="0.5"
+                                            fill="currentColor" opacity="0.4" />
+                                        <rect x="4" y="4" width="3" height="10" rx="0.5"
+                                            fill="currentColor" opacity="0.7" />
+                                        <rect x="8" y="1" width="3" height="13" rx="0.5"
+                                            fill="currentColor" opacity="0.3" />
+                                    </svg>
+                                    Medium
+                                </span>
+                            </x-table.cell>
+                            {{-- Assigned To --}}
+                            <x-table.cell>
+                                <div class="flex items-center gap-2">
+                                    <x-avatar src="https://i.pravatar.cc/150?u=sarah" alt="Sarah Lee"
+                                        size="xs" />
+                                    <span class="text-zinc-700 dark:text-zinc-200">Sarah Lee</span>
+                                </div>
+                            </x-table.cell>
+                            {{-- Status: Delivered (green) --}}
+                            <x-table.cell>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-sm text-emerald-600 dark:text-emerald-400">
+                                    <i class="ph ph-check text-sm shrink-0"></i>
+                                    Delivered
+                                </span>
+                            </x-table.cell>
+                            <x-table.cell>2025-08-19</x-table.cell>
+                            {{-- SLA Due: urgent = red --}}
+                            <x-table.cell class="font-medium text-red-600 dark:text-red-400">1h left</x-table.cell>
+                            <x-table.cell class="w-10 px-2">
+                                <button
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                                    <i class="ph ph-dots-three-vertical text-base"></i>
+                                </button>
+                            </x-table.cell>
                         </x-table.row>
+
+                        {{-- ===== ROW 3: #2321 · Low · In Progress · 1d left ===== --}}
                         <x-table.row>
-                            <x-table.cell class="font-medium text-zinc-900 dark:text-white">House</x-table.cell>
-                            <x-table.cell>632 Riverside Flats</x-table.cell>
-                            <x-table.cell>18 Feb 2026</x-table.cell>
-                            <x-table.cell align="right">$425,000</x-table.cell>
-                            <x-table.cell><x-badge color="red" dot>Pending</x-badge></x-table.cell>
+                            <x-table.cell class="w-10 px-4">
+                                <input type="checkbox"
+                                    class="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0 bg-white dark:bg-zinc-800 transition cursor-pointer">
+                            </x-table.cell>
+                            <x-table.cell class="pl-0 font-medium text-zinc-800 dark:text-white">#2321</x-table.cell>
+                            <x-table.cell class="text-zinc-700 dark:text-zinc-200">Feature request
+                                export</x-table.cell>
+                            {{-- Priority: Low (yellow) --}}
+                            <x-table.cell>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-sm font-medium text-yellow-600 dark:text-yellow-400">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        class="shrink-0">
+                                        <rect x="0" y="7" width="3" height="7" rx="0.5"
+                                            fill="currentColor" opacity="0.4" />
+                                        <rect x="4" y="4" width="3" height="10" rx="0.5"
+                                            fill="currentColor" opacity="0.2" />
+                                        <rect x="8" y="1" width="3" height="13" rx="0.5"
+                                            fill="currentColor" opacity="0.2" />
+                                    </svg>
+                                    Low
+                                </span>
+                            </x-table.cell>
+                            {{-- Assigned To --}}
+                            <x-table.cell>
+                                <div class="flex items-center gap-2">
+                                    <x-avatar src="https://i.pravatar.cc/150?u=john" alt="John Doe" size="xs" />
+                                    <span class="text-zinc-700 dark:text-zinc-200">John Doe</span>
+                                </div>
+                            </x-table.cell>
+                            {{-- Status: In Progress (orange) --}}
+                            <x-table.cell>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-sm text-orange-600 dark:text-orange-400">
+                                    <i class="ph ph-clock text-sm shrink-0"></i>
+                                    In Progress
+                                </span>
+                            </x-table.cell>
+                            <x-table.cell>2025-08-19</x-table.cell>
+                            <x-table.cell class="text-zinc-500 dark:text-zinc-400">1d left</x-table.cell>
+                            <x-table.cell class="w-10 px-2">
+                                <button
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                                    <i class="ph ph-dots-three-vertical text-base"></i>
+                                </button>
+                            </x-table.cell>
                         </x-table.row>
+
+                        {{-- ===== ROW 4: #2322 · Medium · In Progress · 9h left ===== --}}
                         <x-table.row>
-                            <x-table.cell class="font-medium text-zinc-900 dark:text-white">Loft</x-table.cell>
-                            <x-table.cell>578 Willowbrook Lofts</x-table.cell>
-                            <x-table.cell>27 Feb 2026</x-table.cell>
-                            <x-table.cell align="right">$389,900</x-table.cell>
-                            <x-table.cell><x-badge color="green" dot>Completed</x-badge></x-table.cell>
+                            <x-table.cell class="w-10 px-4">
+                                <input type="checkbox"
+                                    class="h-4 w-4 rounded border-zinc-300 dark:border-zinc-600 text-indigo-600 focus:ring-indigo-500 focus:ring-offset-0 bg-white dark:bg-zinc-800 transition cursor-pointer">
+                            </x-table.cell>
+                            <x-table.cell class="pl-0 font-medium text-zinc-800 dark:text-white">#2322</x-table.cell>
+                            <x-table.cell class="text-zinc-700 dark:text-zinc-200">Contract renewal
+                                issue</x-table.cell>
+                            {{-- Priority: Medium (amber) --}}
+                            <x-table.cell>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 dark:text-amber-400">
+                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                        class="shrink-0">
+                                        <rect x="0" y="7" width="3" height="7" rx="0.5"
+                                            fill="currentColor" opacity="0.4" />
+                                        <rect x="4" y="4" width="3" height="10" rx="0.5"
+                                            fill="currentColor" opacity="0.7" />
+                                        <rect x="8" y="1" width="3" height="13" rx="0.5"
+                                            fill="currentColor" opacity="0.3" />
+                                    </svg>
+                                    Medium
+                                </span>
+                            </x-table.cell>
+                            {{-- Assigned To --}}
+                            <x-table.cell>
+                                <div class="flex items-center gap-2">
+                                    <x-avatar src="https://i.pravatar.cc/150?u=michael" alt="Michael Wong"
+                                        size="xs" />
+                                    <span class="text-zinc-700 dark:text-zinc-200">Michael Wong</span>
+                                </div>
+                            </x-table.cell>
+                            {{-- Status: In Progress (orange) --}}
+                            <x-table.cell>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-sm text-orange-600 dark:text-orange-400">
+                                    <i class="ph ph-clock text-sm shrink-0"></i>
+                                    In Progress
+                                </span>
+                            </x-table.cell>
+                            <x-table.cell>2025-08-20</x-table.cell>
+                            <x-table.cell class="text-zinc-500 dark:text-zinc-400">9h left</x-table.cell>
+                            <x-table.cell class="w-10 px-2">
+                                <button
+                                    class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                                    <i class="ph ph-dots-three-vertical text-base"></i>
+                                </button>
+                            </x-table.cell>
                         </x-table.row>
-                        <x-table.row>
-                            <x-table.cell class="font-medium text-zinc-900 dark:text-white">Apartment</x-table.cell>
-                            <x-table.cell>853 Oakridge Apts</x-table.cell>
-                            <x-table.cell>05 Mar 2026</x-table.cell>
-                            <x-table.cell align="right">$265,750</x-table.cell>
-                            <x-table.cell><x-badge color="red" dot>Pending</x-badge></x-table.cell>
-                        </x-table.row>
-                        <x-table.row>
-                            <x-table.cell class="font-medium text-zinc-900 dark:text-white">House</x-table.cell>
-                            <x-table.cell>947 Maple Gardens</x-table.cell>
-                            <x-table.cell>11 Mar 2026</x-table.cell>
-                            <x-table.cell align="right">$498,000</x-table.cell>
-                            <x-table.cell><x-badge color="green" dot>Completed</x-badge></x-table.cell>
-                        </x-table.row>
-                        <x-table.row>
-                            <x-table.cell class="font-medium text-zinc-900 dark:text-white">Townhouse</x-table.cell>
-                            <x-table.cell>214 Cedarwood Lane</x-table.cell>
-                            <x-table.cell>22 Mar 2026</x-table.cell>
-                            <x-table.cell align="right">$372,400</x-table.cell>
-                            <x-table.cell><x-badge color="green" dot>Completed</x-badge></x-table.cell>
-                        </x-table.row>
+
                     </x-table.body>
                 </x-table>
             </x-card>
@@ -184,7 +370,8 @@ new class extends Component {
                             </button>
                         </div>
                         <div class="flex items-center justify-between mt-3">
-                            <h4 class="text-sm font-medium text-zinc-900 dark:text-white truncate">Riverstone, Brookside
+                            <h4 class="text-sm font-medium text-zinc-900 dark:text-white truncate">Riverstone,
+                                Brookside
                                 District</h4>
                             <x-badge color="green" dot size="sm">Active</x-badge>
                         </div>
