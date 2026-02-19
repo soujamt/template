@@ -360,7 +360,7 @@ new class extends Component {
                     {{-- Property Card 1 --}}
                     <div>
                         <div
-                            class="rounded-lg overflow-hidden aspect-[16/10] bg-zinc-100 dark:bg-zinc-800 relative group">
+                            class="rounded-lg overflow-hidden aspect-16/10 bg-zinc-100 dark:bg-zinc-800 relative group">
                             <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&h=250&fit=crop"
                                 alt="Property"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -389,7 +389,7 @@ new class extends Component {
                     {{-- Property Card 2 --}}
                     <div>
                         <div
-                            class="rounded-lg overflow-hidden aspect-[16/10] bg-zinc-100 dark:bg-zinc-800 relative group">
+                            class="rounded-lg overflow-hidden aspect-16/10 bg-zinc-100 dark:bg-zinc-800 relative group">
                             <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=250&fit=crop"
                                 alt="Property"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
