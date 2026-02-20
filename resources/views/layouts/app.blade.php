@@ -122,11 +122,16 @@
                 </x-sidebar.dropdown>
             </x-sidebar.group>
 
+            <x-sidebar.group label="Pages & Mockups">
+                <x-sidebar.item href="{{ route('mockups.table') }}" icon="ph ph-table">Table Data</x-sidebar.item>
+                <x-sidebar.item href="{{ route('mockups.form') }}" icon="ph ph-textbox">Forms</x-sidebar.item>
+            </x-sidebar.group>
+
             <x-sidebar.group label="Settings">
                 <x-sidebar.item href="#" icon="ph ph-users">Team</x-sidebar.item>
                 <x-sidebar.item href="#" icon="ph ph-scroll">Audit Logs</x-sidebar.item>
                 <x-sidebar.item href="#" icon="ph ph-credit-card">Billing</x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-gear">Settings</x-sidebar.item>
+                <x-sidebar.item href="{{ route('mockups.settings') }}" icon="ph ph-gear">Settings</x-sidebar.item>
             </x-sidebar.group>
         </x-sidebar.content>
 
