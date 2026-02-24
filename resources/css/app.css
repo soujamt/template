@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import '../../vendor/livewire/flux/dist/flux.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -16,7 +17,20 @@
         "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
 
-    /* Custom Gray Scale (replacing Zinc) */
+    /* Primary Color */
+    --color-primary-50: oklch(0.9572289684164991 0.05835296988193806 132.83351789573265);
+    --color-primary-100: oklch(0.898091894430708 0.10899228268969939 131.78518182414365);
+    --color-primary-200: oklch(0.8173292792666879 0.09840148910046875 131.7601212266681);
+    --color-primary-300: oklch(0.7703502492385528 0.09231594599853771 131.6210480035151);
+    --color-primary-400: oklch(0.7044884584794457 0.08369563596695417 131.5073356877338);
+    --color-primary-500: oklch(0.6273276032611612 0.0738510194055145 131.76101146689578);
+    --color-primary-600: oklch(0.5398749514506622 0.06564278216216557 132.546672335878);
+    --color-primary-700: oklch(0.4417098659947572 0.05115664091157974 131.0486788637261);
+    --color-primary-800: oklch(0.34239231606047504 0.04012205839209798 131.4875947631002);
+    --color-primary-900: oklch(0.23935256233058408 0.02816454800060084 132.38280095329944);
+    --color-primary-950: oklch(0.18132972614900958 0.021753409305180466 133.36707837040825);
+    
+    /* Custom Zinc Colors */
     --color-zinc-50: var(--color-mist-50);
     --color-zinc-100: var(--color-mist-100);
     --color-zinc-200: var(--color-mist-200);
@@ -28,17 +42,4 @@
     --color-zinc-800: var(--color-mist-800);
     --color-zinc-900: var(--color-mist-900);
     --color-zinc-950: var(--color-mist-950);
-
-    /* Primary Color */
-    --color-primary-50: var(--color-blue-50);
-    --color-primary-100: var(--color-blue-100);
-    --color-primary-200: var(--color-blue-200);
-    --color-primary-300: var(--color-blue-300);
-    --color-primary-400: var(--color-blue-400);
-    --color-primary-500: var(--color-blue-500);
-    --color-primary-600: var(--color-blue-600);
-    --color-primary-700: var(--color-blue-700);
-    --color-primary-800: var(--color-blue-800);
-    --color-primary-900: var(--color-blue-900);
-    --color-primary-950: var(--color-blue-950);
 }

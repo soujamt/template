@@ -16,19 +16,8 @@
     <!-- Geist Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
         rel="stylesheet">
-
-    <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
-                '(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-    </script>
 
     <style>
         [x-cloak] {
@@ -72,6 +61,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @livewireStyles
+    @fluxAppearance
 </head>
 
 <body
@@ -125,30 +115,7 @@
     <!-- Main Content -->
     <main class="flex-1 flex flex-col min-w-0 overflow-hidden transition-all duration-300 ease-in-out">
         <!-- Mobile Navbar -->
-        <div class="flex h-14 shrink-0 items-center justify-between border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 md:hidden"
-            x-data="{
-                isDark: localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
-                smoothThemeSwitch(callback) {
-                    const style = document.createElement('style');
-                    style.textContent = '*, *::before, *::after { transition: color 150ms ease, background-color 150ms ease, background 150ms ease, border-color 150ms ease, box-shadow 150ms ease, opacity 150ms ease, fill 150ms ease, stroke 150ms ease !important; }';
-                    document.head.appendChild(style);
-                    callback();
-                    setTimeout(() => { style.remove(); }, 200);
-                },
-                cycleTheme() {
-                    this.smoothThemeSwitch(() => {
-                        if (this.isDark) {
-                            localStorage.theme = 'light';
-                            document.documentElement.classList.remove('dark');
-                            this.isDark = false;
-                        } else {
-                            localStorage.theme = 'dark';
-                            document.documentElement.classList.add('dark');
-                            this.isDark = true;
-                        }
-                    });
-                }
-            }">
+        <div class="flex h-14 shrink-0 items-center justify-between border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-3 md:hidden">
 
             <!-- Left: Hamburger -->
             <x-ui.button variant="ghost" size="icon" @click="sidebarExpanded = true; sidebarOpen = true">
@@ -163,8 +130,7 @@
                 </x-ui.button>
 
                 <!-- Avatar -->
-                <x-avatar src="https://avatars.laravel.cloud/taylor@laravel.com" size="md"
-                    class="cursor-pointer" />
+                <flux:profile :chevron="false" avatar="https://avatars.laravel.cloud/taylor@laravel.com" />
             </div>
         </div>
 
@@ -183,18 +149,8 @@
     </div>
 
     @livewireScripts
+    @fluxScripts
 
-    <script>
-        // Re-apply theme after Livewire wire:navigate page transitions
-        document.addEventListener('livewire:navigated', () => {
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia(
-                    '(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
-    </script>
 </body>
 
 </html>
