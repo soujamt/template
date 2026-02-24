@@ -92,18 +92,12 @@
         <x-sidebar.header icon="ph-fill ph-lightning" name="Acme Inc." color="bg-rose-400" />
 
         <x-sidebar.content>
-            <x-sidebar.group label="Overview">
+            <x-sidebar.group>
                 <x-sidebar.item href="{{ route('inicio') }}" icon="ph ph-house-simple" :active="request()->routeIs('inicio')">
                     Inicio
                 </x-sidebar.item>
-            </x-sidebar.group>
-
-            <x-sidebar.group label="UI Components">
                 <x-sidebar.dropdown label="Elements" icon="ph ph-squares-four" :active="request()->routeIs('components.*')">
                     <x-sidebar.item href="{{ route('components.buttons') }}" :active="request()->routeIs('components.buttons')">Buttons</x-sidebar.item>
-                    <x-sidebar.item href="#">Inputs</x-sidebar.item>
-                    <x-sidebar.item href="#">Cards</x-sidebar.item>
-                    <x-sidebar.item href="#">Badges</x-sidebar.item>
                 </x-sidebar.dropdown>
             </x-sidebar.group>
         </x-sidebar.content>
