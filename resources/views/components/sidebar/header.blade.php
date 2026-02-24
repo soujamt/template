@@ -21,12 +21,12 @@
             </div>
 
             <!-- Collapse / Close Button -->
-            <x-button variant="ghost" size="icon"
+            <x-ui.button variant="ghost" size="icon"
                 @click="window.innerWidth >= 768 ? sidebarExpanded = false : sidebarOpen = false"
                 title="Collapse Sidebar" class="shrink-0">
                 <i class="ph-fill ph-sidebar-simple text-lg hidden md:block"></i>
                 <i class="ph ph-x text-lg md:hidden"></i>
-            </x-button>
+            </x-ui.button>
         </div>
     </template>
 
@@ -47,9 +47,9 @@
             <!-- Expand icon (on hover) -->
             <div
                 class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover/header:opacity-100">
-                <x-button variant="ghost" size="icon" title="Expand Sidebar" class="shrink-0">
+                <x-ui.button variant="ghost" size="icon" title="Expand Sidebar" class="shrink-0">
                     <i class="ph-fill ph-sidebar-simple text-xl transform rotate-180"></i>
-                </x-button>
+                </x-ui.button>
             </div>
         </div>
     </template>

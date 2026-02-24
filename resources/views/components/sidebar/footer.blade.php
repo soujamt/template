@@ -109,12 +109,12 @@
     <template x-if="!sidebarExpanded">
         <div class="flex flex-col items-center gap-3 py-3">
             {{-- Theme Cycle Button --}}
-            <x-button variant="primary" size="icon" color="zinc" @click="cycleTheme()">
+            <x-ui.button variant="primary" size="icon" color="zinc" @click="cycleTheme()">
                 <i class="ph-fill text-lg" :class="isDark ? 'ph-moon' : 'ph-sun'"></i>
-            </x-button>
+            </x-ui.button>
 
             {{-- Avatar Only --}}
-            <x-avatar :src="$avatar" size="lg" />
+            <x-avatar :src="$avatar" size="md" />
         </div>
     </template>
 </div>

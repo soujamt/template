@@ -106,7 +106,6 @@
                 <x-sidebar.item href="{{ route('inicio') }}" icon="ph ph-house-simple" :active="request()->routeIs('inicio')">
                     Inicio
                 </x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-chart-line-up">Analytics</x-sidebar.item>
             </x-sidebar.group>
 
             <x-sidebar.group label="UI Components">
@@ -116,22 +115,6 @@
                     <x-sidebar.item href="#">Cards</x-sidebar.item>
                     <x-sidebar.item href="#">Badges</x-sidebar.item>
                 </x-sidebar.dropdown>
-                <x-sidebar.dropdown label="Overlay" icon="ph ph-browsers">
-                    <x-sidebar.item href="#">Modals</x-sidebar.item>
-                    <x-sidebar.item href="#">Tooltips</x-sidebar.item>
-                </x-sidebar.dropdown>
-            </x-sidebar.group>
-
-            <x-sidebar.group label="Pages & Mockups">
-                <x-sidebar.item href="{{ route('mockups.table') }}" icon="ph ph-table">Table Data</x-sidebar.item>
-                <x-sidebar.item href="{{ route('mockups.form') }}" icon="ph ph-textbox">Forms</x-sidebar.item>
-            </x-sidebar.group>
-
-            <x-sidebar.group label="Settings">
-                <x-sidebar.item href="#" icon="ph ph-users">Team</x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-scroll">Audit Logs</x-sidebar.item>
-                <x-sidebar.item href="#" icon="ph ph-credit-card">Billing</x-sidebar.item>
-                <x-sidebar.item href="{{ route('mockups.settings') }}" icon="ph ph-gear">Settings</x-sidebar.item>
             </x-sidebar.group>
         </x-sidebar.content>
 
@@ -168,19 +151,19 @@
             }">
 
             <!-- Left: Hamburger -->
-            <x-button variant="ghost" size="icon" @click="sidebarExpanded = true; sidebarOpen = true">
+            <x-ui.button variant="ghost" size="icon" @click="sidebarExpanded = true; sidebarOpen = true">
                 <i class="ph ph-list text-xl"></i>
-            </x-button>
+            </x-ui.button>
 
             <!-- Right: Theme Toggle + Avatar -->
             <div class="flex items-center gap-2">
                 <!-- Theme Cycle Button -->
-                <x-button variant="secondary" size="icon" @click="cycleTheme()">
+                <x-ui.button variant="secondary" size="icon" @click="cycleTheme()">
                     <i class="ph-fill text-lg" :class="isDark ? 'ph-moon' : 'ph-sun'"></i>
-                </x-button>
+                </x-ui.button>
 
                 <!-- Avatar -->
-                <x-avatar src="https://avatars.laravel.cloud/taylor@laravel.com" size="lg"
+                <x-avatar src="https://avatars.laravel.cloud/taylor@laravel.com" size="md"
                     class="cursor-pointer" />
             </div>
         </div>
